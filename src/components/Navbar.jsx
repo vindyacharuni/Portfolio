@@ -7,7 +7,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     // Handle scroll spy
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['hero', 'about', 'education', 'projects', 'contact'];
+            const sections = ['hero', 'about', 'education', 'projects', 'blogs', 'contact'];
             const scrollPosition = window.scrollY + 100; // Offset for navbar
 
             for (const section of sections) {
@@ -45,7 +45,17 @@ const Navbar = ({ theme, toggleTheme }) => {
         <nav className="navbar">
             <div className="nav-brand">Vindya.</div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Navigation Links */}
+            <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
+                <li><a href="#hero" className={activeSection === 'hero' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'hero')}>Home</a></li>
+                <li><a href="#about" className={activeSection === 'about' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'about')}>About</a></li>
+                <li><a href="#education" className={activeSection === 'education' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'education')}>Education</a></li>
+                <li><a href="#projects" className={activeSection === 'projects' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'projects')}>Projects</a></li>
+                <li><a href="#blogs" className={activeSection === 'blogs' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'blogs')}>Blogs</a></li>
+                <li><a href="#contact" className={activeSection === 'contact' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'contact')}>Contact</a></li>
+            </ul>
+
+            <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <button 
                     onClick={toggleTheme} 
                     className="theme-toggle-btn"
@@ -69,21 +79,11 @@ const Navbar = ({ theme, toggleTheme }) => {
                         </svg>
                     )}
                 </button>
-                
                 {/* Mobile Menu Button */}
                 <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? 'Close' : 'Menu'}
                 </button>
             </div>
-
-            {/* Navigation Links */}
-            <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
-                <li><a href="#hero" className={activeSection === 'hero' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'hero')}>Home</a></li>
-                <li><a href="#about" className={activeSection === 'about' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'about')}>About</a></li>
-                <li><a href="#education" className={activeSection === 'education' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'education')}>Education</a></li>
-                <li><a href="#projects" className={activeSection === 'projects' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'projects')}>Projects</a></li>
-                <li><a href="#contact" className={activeSection === 'contact' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'contact')}>Contact</a></li>
-            </ul>
 
             <style>{`
                 .theme-toggle-btn {
