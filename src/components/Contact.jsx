@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import emailjs from '@emailjs/browser'; // 1. Import EmailJS
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [errors, setErrors] = useState({});
     const [status, setStatus] = useState('');
+    const [isSending, setIsSending] = useState(false); // 2. Add loading state
     const revealRef = useScrollReveal();
 
     const validateForm = () => {
@@ -26,9 +28,35 @@ const Contact = () => {
         setStatus('');
 
         if (validateForm()) {
-            setStatus('Message simulated successfully! I will get back to you soon.');
-            setFormData({ name: '', email: '', message: '' });
-            setErrors({});
+            setIsSending(true);
+
+            // 3. Map your React state to the variables in your EmailJS template
+            const templateParams = {
+                user_name: formData.name,
+                user_email: formData.email,
+                message: formData.message,
+            };
+
+            // 4. Send the email
+            emailjs.send(
+                'service_og0cl1b',   // Replace with your actual Service ID
+                'template_dkt68tp',  // Replace with your actual Template ID
+                templateParams,
+                'g0f8H2IxaiY-Le_zh'    // Replace with your actual Public Key
+            )
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                setStatus('Message sent successfully! I will get back to you soon.');
+                setFormData({ name: '', email: '', message: '' }); // Clear form
+                setErrors({});
+            })
+            .catch((error) => {
+                console.error('FAILED...', error);
+                setStatus('Failed to send the message. Please try again later.');
+            })
+            .finally(() => {
+                setIsSending(false); // Re-enable the button
+            });
         }
     };
 
@@ -78,8 +106,15 @@ const Contact = () => {
                     {errors.message && <span className="error-text">{errors.message}</span>}
                 </div>
 
-                <button type="submit" className="btn-primary">Send Message</button>
-                {status && <p className="form-status success">{status}</p>}
+                {/* 5. Update button to show loading state */}
+                <button type="submit" className="btn-primary" disabled={isSending}>
+                    {isSending ? 'Sending...' : 'Send Message'}
+                </button>
+                {status && (
+                    <p className={`form-status ${status.includes('successfully') ? 'success' : 'error'}`}>
+                        {status}
+                    </p>
+                )}
             </form>
         </section>
     );
