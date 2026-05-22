@@ -31,14 +31,7 @@ export const education = [
     details: "Results: A -Combined Maths,A-Chemistry,C-Physics,Z score:1.5289",
     type: "al"
   },
-  {
-    id: 3,
-    institution: "Pushpadana Girls' College, Kandy",
-    degree: "GCE Ordinary Level",
-    duration: "2018",
-    details: "Results:8As 1B",
-    type: "ol"
-  }
+  
 ];
 
 export const projects = [
