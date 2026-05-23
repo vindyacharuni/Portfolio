@@ -7,7 +7,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     // Handle scroll spy
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['hero', 'about', 'education', 'projects', 'blogs', 'contact'];
+            const sections = ['hero', 'about', 'education', 'skills', 'projects', 'blogs', 'contact'];
             const scrollPosition = window.scrollY + 100; // Offset for navbar
 
             for (const section of sections) {
@@ -50,6 +50,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 <li><a href="#hero" className={activeSection === 'hero' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'hero')}>Home</a></li>
                 <li><a href="#about" className={activeSection === 'about' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'about')}>About</a></li>
                 <li><a href="#education" className={activeSection === 'education' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'education')}>Education</a></li>
+                <li><a href="#skills" className={activeSection === 'skills' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'skills')}>Skills</a></li>
                 <li><a href="#projects" className={activeSection === 'projects' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'projects')}>Projects</a></li>
                 <li><a href="#blogs" className={activeSection === 'blogs' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'blogs')}>Blogs</a></li>
                 <li><a href="#contact" className={activeSection === 'contact' ? 'active-link' : ''} onClick={(e) => handleScrollClick(e, 'contact')}>Contact</a></li>

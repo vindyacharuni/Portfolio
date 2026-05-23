@@ -2,7 +2,7 @@
 export const profileData = {
   name: "Vindya Wickramathilaka",
   role: "Software Engineering Undergraduate",
-  tagline: "I build scalable web applications, robust systems, and elegant administrative dashboards.",
+  tagline: "I am a full-stack developer focused on building seamless web applications, bridging the gap between robust backend architecture and elegant user interfaces",
   about: "Hello! I’m Vindya Wickramathilaka, a 3rd-year Software Engineering undergraduate at the University of Kelaniya. I am deeply passionate about software engineering, thriving on the challenge of transforming complex problems into clean, scalable, and user-centric solutions.I enjoy the entire lifecycle of software development, from architecting robust systems to designing intuitive user experiences.Beyond writing code, I believe the best products are built collaboratively.I actively participate in hackathons to push my technical boundaries under pressure, and I love working in teams to bring innovative ideas to life.Community is also a core part of my journey.I proudly volunteer with the IEEE Student Branch and the WIE Affinity Group, where I enjoy fostering growth, learning, and tech awareness within the university ecosystem.",
   profilePic: "/newprofile.jpg",
   cvFile: "/Vindya_CV.pdf",
