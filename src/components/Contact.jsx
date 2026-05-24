@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import emailjs from '@emailjs/browser'; // 1. Import EmailJS
+import emailjs from '@emailjs/browser'; 
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [errors, setErrors] = useState({});
     const [status, setStatus] = useState('');
-    const [isSending, setIsSending] = useState(false); // 2. Add loading state
+    const [isSending, setIsSending] = useState(false); 
     const revealRef = useScrollReveal();
 
     const validateForm = () => {
@@ -30,24 +30,24 @@ const Contact = () => {
         if (validateForm()) {
             setIsSending(true);
 
-            // 3. Map your React state to the variables in your EmailJS template
+            
             const templateParams = {
                 user_name: formData.name,
                 user_email: formData.email,
                 message: formData.message,
             };
 
-            // 4. Send the email
-            emailjs.send(
-                'service_og0cl1b',   // Replace with your actual Service ID
-                'template_dkt68tp',  // Replace with your actual Template ID
+            
+           emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,   
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,  
                 templateParams,
-                'g0f8H2IxaiY-Le_zh'    // Replace with your actual Public Key
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY    
             )
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
                 setStatus('Message sent successfully! I will get back to you soon.');
-                setFormData({ name: '', email: '', message: '' }); // Clear form
+                setFormData({ name: '', email: '', message: '' }); 
                 setErrors({});
             })
             .catch((error) => {
@@ -55,7 +55,7 @@ const Contact = () => {
                 setStatus('Failed to send the message. Please try again later.');
             })
             .finally(() => {
-                setIsSending(false); // Re-enable the button
+                setIsSending(false); 
             });
         }
     };
