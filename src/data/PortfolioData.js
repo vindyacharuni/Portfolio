@@ -73,17 +73,25 @@ export const blogs = [
 export const certifications = [
   {
     id: 1,
-    title: "AWS Certified Developer - Associate",
-    issuer: "Amazon Web Services",
+    title: "Diploma in Website Development Using HTML and CSS",
+    issuer: "Alison",
     date: "2025",
-    details: "Demonstrates proficiency in developing, deploying, and debugging cloud-based applications using AWS."
+    details: "Comprehensive training in HTML5 and CSS3, covering responsive design, layout techniques, and best practices for modern web development."
   },
   {
     id: 2,
-    title: "Full-Stack Web Development Bootcamp",
-    issuer: "Udemy",
-    date: "2023",
-    details: "Comprehensive training in React, Node.js, Express, and MongoDB."
+    title: "Figma Design Basics and Features",
+    issuer: "Alison",
+    date: "2025",
+    details: "Comprehensive training in Figma, covering design principles, user interface design, and collaborative design workflows."
+  },
+  
+  {
+    id: 3,
+    title: "Participation of IEEEXtreme 19.0",
+    issuer: "IEEE Sri Lanka Section",
+    date: "2025",
+    details: "Participated in the 19th edition of IEEEXtreme, a global coding competition organized by IEEE, showcasing problem-solving skills and teamwork under pressure."
   }
 ];
 
